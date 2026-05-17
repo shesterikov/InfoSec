@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: .
+    container_name: lab_6
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - ./:/app
+      - /app/node_modules

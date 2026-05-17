@@ -1,0 +1,19 @@
+{
+    "name": "lab_6",
+    "version": "0.0.1",
+    "description": "lab_6",
+    "main": "./src/server.js",
+    "scripts": {
+        "start": "nodemon ./src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "type": "module",
+    "license": "ISC",
+    "dependencies": {
+        "@fastify/static": "^8.2.0",
+        "fastify": "^5.4.0",
+        "nodemon": "^2.0.20",
+        "socket.io": "^4.8.1"
+    }
+}

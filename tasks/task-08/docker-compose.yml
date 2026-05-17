@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    image: app_image:latest
+    volumes:
+      - ./:/app
+    ports:
+      - '8080:8080'
+
+  db:
+    image: postgres
+    command: postgres -c 'max_connections=200'
+    container_name: db
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: student
+      POSTGRES_PASSWORD: HjjnGytfnhg
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+  pg:
+    image: dpage/pgadmin4:8.9
+    container_name: pg
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=student@npi-tu.ru
+      - PGADMIN_DEFAULT_PASSWORD=TlBJREVQUE9WVA==
+    ports:
+      - '7777:80'
