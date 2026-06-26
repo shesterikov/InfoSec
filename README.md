@@ -54,7 +54,6 @@
 - Docker / Docker Compose
 - PostgreSQL
 - Wireshark
-- Hashcat
 - John the Ripper
 - Kali Linux
 - Node.js
