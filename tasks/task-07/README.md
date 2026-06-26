@@ -32,7 +32,7 @@
 
 10. Получите хеш, используя команду `zip2john secured_data.zip > secured_data.txt`
 
-11.  Выполните перебор пароля с использованием словаря, используя команду `john --wordlist=/usr/share/wordlists/rockyou.txt --format=zip secured_data.txt`
+11.  Выполните перебор пароля с использованием словаря, используя команду `john --wordlist=/usr/share/wordlists/rockyou.txt secured_data.txt`
 
 12.  По завершению работы утилита `john` также отобразит найденный пароль
 
