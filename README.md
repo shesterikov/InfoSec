@@ -83,209 +83,255 @@
 
 ## Программа курса
 
-### Модуль 1. Введение в информационную безопасность (2 ак. часа)
-
-#### Темы
-
+### Модуль 1. Введение в информационную безопасность (2 часа)
+#### Лекция 1. Введение в информационную безопасность
+##### Основные вопросы
 - Основные понятия информационной безопасности
-- Конфиденциальность, целостность и доступность (CIA)
-- Угрозы и модель нарушителя
+- Модель CIA
+- Дополнительные свойства безопасности
+- Угроза, уязвимость, риск
 - Поверхность атаки
+- Модель нарушителя
 - История компьютерной безопасности
 - Современный ландшафт угроз
 - Экономика киберпреступности
-- Типы атак и уязвимостей
+- Классификация атак
 
-### Модуль 2. Сетевая безопасность и защищённые коммуникации (4 ак. часа)
-
-#### Темы
-
-- HTTP/HTTPS
-- TLS и сертификаты
+### Модуль 2. Сетевая безопасность и защищённые коммуникации (4 часа)
+#### Лекция 2. HTTP, HTTPS и TLS
+##### Основные вопросы
+- Архитектура HTTP
+- HTTPS
+- TLS
+- Цифровые сертификаты
+- PKI
 - TLS Handshake
-- Атаки «человек посередине» (MITM)
-- DNS и DNS spoofing
-- Прокси и reverse proxy
+- Perfect Forward Secrecy
+- Современные версии TLS
+- Ошибки конфигурирования HTTPS
+
+#### Лекция 3. Анализ сетевого взаимодействия и сетевые атаки
+##### Основные вопросы
+- DNS
+- DNS Spoofing
+- MITM
+- Proxy и Reverse Proxy
+- Основы балансировки нагрузки
 - Анализ сетевого трафика
 - Wireshark
-- Основы сетевой безопасности приложений
+- Основы защиты сетевых приложений
 
-### Практика
-
-- HTTP/HTTPS
-- Анализ TLS Handshake
-
-### Модуль 3. Криптография и защита данных (4 ак. часа)
-
-#### Темы
-
+### Модуль 3. Криптография и защита данных (4 часа)
+#### Лекция 4. Современная криптография
+##### Основные вопросы
 - Симметричное шифрование
-- Асимметричное шифрование
 - AES
-- RSA и ECC
+- Асимметричное шифрование
+- RSA
+- ECC
+- Обмен ключами
+- Где используется современная криптография
+
+#### Лекция 5. Защита данных
+##### Основные вопросы
 - Хеш-функции
-- Соль (salt)
-- Хеширование паролей
-- Argon2/bcrypt/scrypt
+- Salt
+- Pepper
+- Argon2
+- bcrypt
+- scrypt
 - Электронная подпись
-- Инфраструктура открытых ключей (PKI)
-- End-to-End Encryption (сквозное шифрование)
+- PKI
+- End-to-End Encryption
 
-### Практика
-
-- Восстановление паролей из хешей
-- Хеширование паролей
-- End-to-End шифрование
-
-### Модуль 4. Аутентификация, авторизация и управление доступом (4 ак. часа)
-
-#### Темы
-
-- Идентификация, аутентификация и авторизация
-- Session-based authentication
+### Модуль 4. Аутентификация, авторизация и управление доступом (4 часа)
+#### Лекция 6. Современная аутентификация пользователей
+##### Основные вопросы
+- Идентификация
+- Аутентификация
+- Авторизация
+- Session Authentication
+- Cookies
+- HTTP-only Cookie
 - JWT
+- MFA
+- OTP
+- FIDO2
+- WebAuthn
+- Passkeys
+- Преимущества беспарольной аутентификации
+
+#### Лекция 7. Управление доступом
+##### Основные вопросы
+- RBAC
+- ABAC
 - OAuth 2.0
 - OpenID Connect
-- Многофакторная аутентификация (MFA/2FA)
-- Ролевая модель доступа (RBAC)
-- HTTP-only Cookie
-- Перехват пользовательских сессий
-- Credential stuffing
+- Session Hijacking
+- Session Fixation
+- Credential Stuffing
+- Практики безопасного управления пользовательскими сессиями
 
-### Практика
-
-- JWT-аутентификация
-- Role-based access control
-- HTTP-only Cookie
-
-### Модуль 5. Безопасность веб-приложений (6 ак. часов)
-
-#### Темы
-
+### Модуль 5. Безопасность веб-приложений (6 часов)
+#### Лекция 8. OWASP Top 10 и клиентские атаки
+##### Основные вопросы
 - OWASP Top 10
 - XSS
+- CSP
+- Security Headers
 - CSRF
+- Clickjacking
+- Защита браузерных приложений
+
+#### Лекция 9. Серверные уязвимости
+##### Основные вопросы
 - SQL Injection
 - SSRF
 - Command Injection
 - Path Traversal
 - Небезопасная десериализация
-- CSP
-- Security Headers
-- Безопасность API
-- Безопасность WebSocket
+- Безопасность файловых загрузок
+- Принципы безопасной обработки данных
+
+#### Лекция 10. Безопасность API
+##### Основные вопросы
+- REST API
+- GraphQL (обзор)
+- WebSocket
 - JWT attacks
 
-### Практика
+##### OWASP API Security Top 10:
+- Broken Object Level Authorization (BOLA)
+- Broken Authentication
+- Broken Object Property Level Authorization
+- Unrestricted Resource Consumption
+- Broken Function Level Authorization
+- Unrestricted Access to Sensitive Business Flows
+- Server Side Request Forgery
+- Security Misconfiguration
+- Improper Inventory Management
+- Unsafe Consumption of APIs
 
-- XSS и CSP
-- SQL Injection и защита
+##### Безопасное проектирование API:
+- API Rate Limiting
+- Версионирование API
+- Безопасное проектирование API
 
-### Модуль 6. Secure SDLC и моделирование угроз (4 ак. часа)
+### Модуль 6. Secure SDLC и моделирование угроз (4 часа)
 
-#### Темы
-
+#### Лекция 11. Secure SDLC
+##### Основные вопросы
 - Security by Design
 - Shift Left Security
 - Secure SDLC
-- Моделирование угроз (Threat Modeling)
-- STRIDE
-- Деревья атак
-- Abuse Cases
-- Безопасное ревью кода
-- SAST/DAST
+- Secure Code Review
+- SAST
+- DAST
 - Управление секретами
 - Безопасность CI/CD
 
-### Модуль 7. Безопасность современных backend/cloud систем (2 ак. часа)
+##### Управление уязвимостями
+- CVE
+- CVSS
+- NVD
+- Software Composition Analysis (SCA)
+- Dependency Scanning
+- Автоматическое обновление зависимостей
+- Политика управления уязвимостями
 
-#### Темы
+#### Лекция 12. Threat Modeling
+##### Основные вопросы
+- Threat Modeling
+- STRIDE
+- Attack Trees
+- Abuse Cases
+- DREAD
+- Приоритизация угроз
+- Практический пример моделирования угроз
 
-- Основы безопасности облачных приложений
+### Модуль 7. Безопасность современных распределённых приложений (2 часа)
+#### Лекция 13. Безопасность современных распределённых приложений
+##### Основные вопросы
+- Архитектура современных распределённых систем
 - Shared Responsibility Model
-- Безопасность API Gateway
-- Межсервисная аутентификация
 - Zero Trust
+- Межсервисная аутентификация
+- API Gateway
+- Service Mesh (обзор)
+- Secrets Management
 - Rate Limiting
+- Основные ошибки защиты распределённых приложений
 
-### Модуль 8. Безопасность беспроводных сетей и мобильных приложений (2 ак. часа)
-
-#### Темы
-
-##### Безопасность беспроводных сетей
-
-- Wi-Fi security
-- WEP/WPA/WPA2/WPA3
+### Модуль 8. Безопасность беспроводных сетей и мобильных приложений (2 часа)
+#### Лекция 14. Безопасность мобильных платформ и беспроводных сетей
+##### Основные вопросы
+###### Беспроводные сети
+- WEP
+- WPA/WPA2/WPA3
 - Evil Twin
 - Rogue AP
-- Captive Portal attacks
-- Атаки на Bluetooth
+- Captive Portal
+- Bluetooth Security
 
-##### Безопасность мобильных приложений
-
-- Модель безопасности Android/iOS
+###### Мобильные приложения
+- Модель безопасности Android
+- Модель безопасности iOS
 - Permissions
-- Mobile malware
+- Mobile Malware
 - Поддельные приложения
-- SS7/Diameter
-- IMSI catcher
-- Zero-click exploitation
 - Pegasus
-- Мобильный трекинг
+- Zero-click атаки
+- Безопасность мобильных API
 
-### Модуль 9. Безопасность цепочки поставки программного обеспечения (2 ак. часа)
-
-#### Темы
-
-- Dependency confusion
+### Модуль 9. Безопасность цепочки поставки ПО (2 часа)
+#### Лекция 15. Supply Chain Security
+##### Основные вопросы
+- Software Supply Chain
+- Dependency Confusion
 - Typosquatting
 - Вредоносные пакеты
-- SBOM
 - Lockfiles
-- Атаки на npm/pip зависимости
-- Supply-chain атаки
+- SBOM
+- Подпись пакетов
+- Supply Chain Levels for Software Artifacts (SLSA) *(обзор)*
 - SolarWinds
-- XZ backdoor
+- XZ Backdoor
+- Практики защиты цепочки поставки
 
-### Модуль 10. Социальная инженерия и безопасность ИИ (2 ак. часа)
-
-#### Темы
-
+### Модуль 10. Социальная инженерия и безопасность ИИ (2 часа)
+#### Лекция 16. Социальная инженерия, безопасность ИИ и конфиденциальность
 ##### Социальная инженерия
-
 - OSINT
 - Фишинг
-- Spear phishing
-- Smishing/Vishing
+- Spear Phishing
+- Smishing
+- Vishing
 - Deepfake
-- Рекламный phishing
-- SPF/DKIM/DMARC
+- SPF
+- DKIM
+- DMARC
 
 ##### Безопасность ИИ
-
 - Prompt Injection
 - Jailbreak
-- Data poisoning
-- Model stealing
+- Data Poisoning
+- Model Stealing
 - Утечки через RAG
-- Небезопасные AI-интеграции
-- AI-generated phishing
+- AI-generated Phishing
+- Безопасная интеграция LLM
 
-### Модуль 11. Конфиденциальность и анонимность (2 ак. часа)
-
-#### Темы
-
-- Browser fingerprinting
-- Cookies и tracking
+##### Конфиденциальность
+- Browser Fingerprinting
+- Cookies
+- Tracking
 - Privacy Sandbox
-- Tracking pixels
 - VPN
-- Tor и onion routing
+- Tor
 - I2P
 - Метаданные
 - Деанонимизация
-- СОРМ
 - DPI
+- СОРМ
 
 ## Практические работы:
 
