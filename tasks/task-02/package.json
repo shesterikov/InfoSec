@@ -1,5 +1,5 @@
 {
-  "name": "lab_4",
+  "name": "lab_3",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cookie": "^11.0.2",
-    "@fastify/jwt": "^9.1.0",
     "fastify": "^5.0.0",
     "nodemon": "^3.1.7",
     "pg": "^8.13.0",

@@ -4,12 +4,12 @@ services:
   api:
     build:
       context: .
-    container_name: lab_6
+    container_name: chat
+    image: api_image:latest
     working_dir: /app
     restart: unless-stopped
     ports:
       - '3000:3000'
-
     volumes:
       - ./:/app
       - /app/node_modules

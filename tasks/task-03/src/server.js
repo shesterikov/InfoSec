@@ -1,16 +1,37 @@
 import Fastify from 'fastify'
+import * as jwt from '@fastify/jwt'
 import { Sequelize, DataTypes } from 'sequelize';
 
 const fastify = Fastify({
     logger: true
 })
 
-const sequelize = new Sequelize('postgres://student:HjjnGytfnhg@db:5432/db') // В случае запуска Node локально требуется заменить db хост на localhost
+fastify.register(jwt, {
+    secret: 'qwerty'
+})
+
+fastify.decorate("authenticate", async function (request, reply) {
+    try {
+        await request.jwtVerify()
+    } catch (err) {
+        reply.send(err)
+    }
+})
+
+const sequelize = new Sequelize('postgres://student:HjjnGytfnhg@db:5432/db') // В случае запуска Node локально требуется заменить db на localhost
 
 const User = sequelize.define("users", {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    salt: DataTypes.STRING,
+    role: {
+        defaultValue: 'user',
+        type: DataTypes.ENUM("user", "admin")
+    }
 });
 
 /**
@@ -27,24 +48,35 @@ fastify.get('/health', async function handler(request, reply) {
 })
 
 fastify.post('/register', async function handler(request, reply) {
-    const { username, password } = request.body;
-    const passwordHash = hash(request.body.password) // Требуется заменить на корректную реализацию хеширования пароля
+    const passwordHash = hash(request.body.password)
+    const newUser = new User({ username: request.body.username, password: request.body.password });
 
-    const user = new User({ username, password });
+    const result = await newUser.save();
 
-    const result = await user.save();
-
-    return result;
+    return { message: 'success', data: result }
 })
 
 fastify.post('/login', async function handler(request, reply) {
-    const { username, password } = request.body;
+    const user = await User.findByPk(1);
 
-    const passwordHash = hash(password) // Требуется заменить на корректную реализацию хеширования пароля
+    const token = fastify.jwt.sign({
+        id: user.id,
+        role: user.role
+    })
 
-    const user = await User.findOne({ where: { username, password: passwordHash } })
+    return { token }
+})
 
-    return user;
+fastify.get('/all', async function handler(request, reply) {
+    return { message: 'visible_all' }
+})
+
+fastify.get("/users", async function handler(request, reply) {
+    return { message: 'super_secret_for_users' }
+})
+
+fastify.get('/admins', async function handler(request, reply) {
+    return { message: 'super_secret_for_admins' }
 })
 
 try {

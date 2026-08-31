@@ -4,12 +4,28 @@ services:
   api:
     build:
       context: .
-    container_name: chat
-    image: api_image:latest
+    container_name: lab_6
     working_dir: /app
     restart: unless-stopped
     ports:
       - '3000:3000'
+
     volumes:
       - ./:/app
       - /app/node_modules
+  kali:
+    image: kalilinux/kali-rolling
+    container_name: kali
+    hostname: kali
+    tty: true
+    stdin_open: true
+    command: sleep infinity
+    working_dir: /root
+    volumes:
+      - kali-root:/root
+      - ./kali-work:/work
+    environment:
+      - TERM=xterm-256color
+
+volumes:
+  kali-root:
