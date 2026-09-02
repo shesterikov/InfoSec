@@ -1,19 +1,4 @@
 services:
-  api:
-    build:
-      context: .
-    container_name: api
-    image: api_image:latest
-    working_dir: /app
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./:/app
-      - /app/node_modules
-
   db:
     image: postgres
     command: postgres -c 'max_connections=200'
@@ -24,7 +9,7 @@ services:
     environment:
       POSTGRES_DB: db
       POSTGRES_USER: student
-      POSTGRES_PASSWORD: HjjnGytfnhg
+      POSTGRES_PASSWORD: emVyMC1kYXkuYXZp
 
   pg:
     image: dpage/pgadmin4:8.9
@@ -34,6 +19,6 @@ services:
       - db
     environment:
       - PGADMIN_DEFAULT_EMAIL=student@npi-tu.ru
-      - PGADMIN_DEFAULT_PASSWORD=TlBJREVQUE9WVA==
+      - PGADMIN_DEFAULT_PASSWORD=aGVsbG9mcmllbmQubW92
     ports:
       - '7777:80'
