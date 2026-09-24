@@ -1,16 +1,26 @@
-version: '3'
+version: '3.8'
 
 services:
+  # Основное приложение (Go)
   app:
     build:
       context: .
     container_name: app
     image: app_image:latest
+    working_dir: /app
+    restart: unless-stopped
     volumes:
       - ./:/app
     ports:
       - '8080:8080'
+    networks:
+      lab:
+        aliases:
+          - target
+    depends_on:
+      - db
 
+  # PostgreSQL
   db:
     image: postgres
     command: postgres -c 'max_connections=200'
@@ -24,7 +34,10 @@ services:
       POSTGRES_PASSWORD: HjjnGytfnhg
     volumes:
       - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - lab
 
+  # pgAdmin
   pg:
     image: dpage/pgadmin4:8.9
     container_name: pg
@@ -32,7 +45,32 @@ services:
     depends_on:
       - db
     environment:
-      - PGADMIN_DEFAULT_EMAIL=student@npi-tu.ru
-      - PGADMIN_DEFAULT_PASSWORD=TlBJREVQUE9WVA==
+      PGADMIN_DEFAULT_EMAIL: student@npi-tu.ru
+      PGADMIN_DEFAULT_PASSWORD: TlBJREVQUE9WVA==
     ports:
       - '7777:80'
+    networks:
+      - lab
+
+  # Kali Linux для сканирования
+  kali:
+    build:
+      context: ./kali
+    container_name: kali
+    networks:
+      - lab
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - kali-root:/root
+
+volumes:
+  kali-root:
+
+networks:
+  lab:
+    name: sql-lab
+    driver: bridge
