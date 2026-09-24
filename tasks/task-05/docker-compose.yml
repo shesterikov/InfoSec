@@ -7,6 +7,10 @@ services:
     container_name: lab_6
     working_dir: /app
     restart: unless-stopped
+    networks:
+      lab:
+        aliases:
+          - target
     ports:
       - '3000:3000'
 
@@ -14,18 +18,21 @@ services:
       - ./:/app
       - /app/node_modules
   kali:
-    image: kalilinux/kali-rolling
+    build:
+      context: ./kali
     container_name: kali
-    hostname: kali
-    tty: true
+    networks:
+      - lab
     stdin_open: true
-    command: sleep infinity
-    working_dir: /root
-    volumes:
-      - kali-root:/root
-      - ./kali-work:/work
-    environment:
-      - TERM=xterm-256color
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
 
 volumes:
   kali-root:
+
+networks:
+  lab:
+    name: xss-lab
+    driver: bridge
