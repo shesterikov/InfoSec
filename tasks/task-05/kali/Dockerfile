@@ -5,12 +5,12 @@ RUN apt-get update \
         nmap \
         curl \
         wget \
-        metasploit-framework \
         netcat-openbsd \
         dnsutils \
         iproute2 \
         iputils-ping \
         ca-certificates \
+        zaproxy \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
