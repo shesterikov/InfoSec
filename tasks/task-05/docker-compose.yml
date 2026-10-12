@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-    container_name: lab_6
+    container_name: lab_5
     working_dir: /app
     restart: unless-stopped
     networks:
