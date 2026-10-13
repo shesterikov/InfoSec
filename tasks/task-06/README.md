@@ -222,11 +222,8 @@ unzip bruteforce.zip
 
 ### Документация:
 
-- [John the Ripper](https://www.openwall.com/john/)
 - [John the Ripper — документация](https://www.openwall.com/john/doc/)
 - [RockYou wordlist](https://github.com/brannondorsey/naive-hashcat/releases/tag/data)
-- [Docker](https://docs.docker.com/desktop/)
-- [Docker Compose](https://docs.docker.com/compose/)
 
 ### Контрольные вопросы:
 
