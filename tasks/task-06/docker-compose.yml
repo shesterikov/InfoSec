@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  kali:
+    build:
+      context: ./kali
+    container_name: kali
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./data:/app/data 
