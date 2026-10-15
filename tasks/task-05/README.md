@@ -248,11 +248,10 @@ zaproxy -cmd -quickurl http://target:3000 -quickout /tmp/zap-report.html
 
 ### Документация
 
-- OWASP Cross Site Scripting Prevention Cheat Sheet
-- OWASP Cross Site Scripting Testing Guide
-- OWASP Content Security Policy Cheat Sheet
-- OWASP ZAP
-- DOMPurify
+- [OWASP Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+- [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html)
+- [ZAP](https://www.zaproxy.org/docs/)
+- [DOMPurify](https://github.com/cure53/DOMPurify)
 
 ### Контрольные вопросы
 
