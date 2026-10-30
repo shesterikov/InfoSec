@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Учебный чат — PostgreSQL</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Учебный чат</h1>
+      <p id="current-user">Вы вошли как <strong>{{.User.Username}}</strong>.</p>
+      <p>История сохраняется в PostgreSQL. Обновите страницу для получения новых сообщений.</p>
+      <a href="/">Обновить сообщения</a>
+      <form method="post" action="/logout"><button type="submit">Выйти</button></form>
+    </header>
+    <section aria-label="История сообщений">
+      {{if not .Messages}}<p class="empty">Сообщений пока нет.</p>{{end}}
+      <ol class="messages">
+        {{range .Messages}}
+          <li data-message-id="{{.ID}}">
+            <div class="meta"><strong>{{.Author}}</strong> <time>{{.Time}}</time></div>
+            <div class="message-text">{{.Text}}</div>
+          </li>
+        {{end}}
+      </ol>
+    </section>
+    <form method="post" action="/messages">
+      <label>Сообщение<textarea name="text" maxlength="1000" required rows="3"></textarea></label>
+      <button type="submit">Отправить</button>
+    </form>
+  </main>
+</body>
+</html>
