@@ -1,0 +1,19 @@
+services:
+  vulnerable:
+    build: ./app
+    environment:
+      MODE: vulnerable
+      PORT: 3000
+    ports:
+      - '3000:3000'
+  protected:
+    build: ./app
+    environment:
+      MODE: protected
+      PORT: 3000
+    ports:
+      - '3002:3000'
+  attacker:
+    build: ./attacker
+    ports:
+      - '3001:3001'
