@@ -196,25 +196,54 @@
 
 #### Лекция 7. Управление доступом
 ##### Основные вопросы
-- RBAC
-- ABAC
-- OAuth 2.0
-- OpenID Connect
-- Session Hijacking
-- Session Fixation
-- Credential Stuffing
-- Практики безопасного управления пользовательскими сессиями
+- Понятие управления доступом: субъекты, объекты, действия и политики.
+- Принципы безопасного управления доступом:
+  - Least Privilege;
+  - Deny by Default;
+  - Separation of Duties;
+  - Complete Mediation.
+- Основные модели управления доступом: DAC, MAC, RBAC, ABAC.
+- Списки контроля доступа (ACL) и их отличие от ABAC.
+- Архитектура авторизации: PEP, PDP, PIP, PAP.
+- OAuth 2.0 и делегированная авторизация.
+- Участники OAuth 2.0, Access Token, Refresh Token, Scope.
+- Authorization Code Flow и PKCE.
+- OpenID Connect (OIDC): ID Token, Claims, UserInfo.
+- Single Sign-On (SSO).
+- Типичные ошибки реализации OAuth 2.0 и OIDC.
+- Broken Access Control.
+- IDOR, BOLA и BFLA.
+- Горизонтальное и вертикальное повышение привилегий.
+- Session Hijacking.
+- Session Fixation.
+- Credential Stuffing.
+- Безопасное управление пользовательскими сессиями и токенами.
+- Практики безопасной реализации авторизации и аудит критических операций.
+
 
 ### Модуль 5. Безопасность приложений (6 часов)
-#### Лекция 8. OWASP Top 10 и клиентские атаки
+#### Лекция 8. OWASP и безопасность веб-приложений
 ##### Основные вопросы
-- OWASP Top 10
-- XSS
-- CSP
-- Security Headers
-- CSRF
-- Clickjacking
-- Защита браузерных приложений
+- OWASP и его роль в безопасности программного обеспечения.
+- Проекты OWASP: Top 10, ASVS, WSTG, Cheat Sheet Series, ZAP.
+- OWASP Top 10:2025.
+- Клиентские и серверные уязвимости веб-приложений.
+- Cross-Site Scripting (XSS).
+- Reflected, Stored и DOM-based XSS.
+- Sources и Sinks в клиентском JavaScript.
+- Защита от XSS: Output Encoding, безопасные DOM API, HTML Sanitization.
+- Content Security Policy (CSP).
+- CSP Report-Only и основные директивы CSP.
+- Subresource Integrity (SRI).
+- Cross-Site Request Forgery (CSRF) и механизмы защиты.
+- Clickjacking и защита от встраивания страниц.
+- Same-Origin Policy (SOP).
+- Cross-Origin Resource Sharing (CORS).
+- CORS Preflight и типичные ошибки конфигурации.
+- Изоляция iframe и взаимодействие через postMessage.
+- HTTP Security Headers.
+- Многоуровневая защита веб-приложений (Defense in Depth).
+- Основные принципы безопасной веб-разработки.
 
 #### Лекция 9. Уязвимости обработки входных данных и управления памятью
 ##### Основные вопросы
