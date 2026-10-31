@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"lab_8/internal/store"
+	"lab_7/internal/store"
 )
 
 func (a *application) chat(w http.ResponseWriter, r *http.Request) {

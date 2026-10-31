@@ -1,4 +1,4 @@
-module lab_8
+module lab_7
 
 go 1.18
 

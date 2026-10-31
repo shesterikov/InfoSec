@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"lab_8/internal/store"
+	"lab_7/internal/store"
 )
 
 type application struct {

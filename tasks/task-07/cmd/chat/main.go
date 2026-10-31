@@ -6,8 +6,8 @@ import (
 	"os"
 	"time"
 
-	"lab_8/internal/store"
-	"lab_8/internal/web"
+	"lab_7/internal/store"
+	"lab_7/internal/web"
 )
 
 func main() {
