@@ -1,0 +1,119 @@
+services:
+  spring:
+    image: vulhub/spring-webmvc:5.3.17
+    platform: linux/amd64
+    depends_on:
+      - interactsh
+    networks:
+      lab:
+        aliases: [target]
+      oast:
+    dns: [172.30.88.53]
+    ports:
+      - "127.0.0.1:4000:8080"
+  
+  spring-fixed:
+    build:
+      context: ./fixed
+      platforms: [linux/amd64]
+    platform: linux/amd64
+    profiles: [comparison]
+    depends_on:
+      - interactsh
+    networks: [lab, oast]
+    dns: [172.30.88.53]
+    ports:
+      - "127.0.0.1:4001:8080"
+
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    environment:
+      ZAP_WEBSWING_OPTS: '-host 0.0.0.0 -port 8090'
+    command: ['zap-webswing.sh']
+    ports:
+      - '127.0.0.1:8081:8080'
+      - '127.0.0.1:8091:8090'
+    networks: [lab]
+    volumes:
+      - zap-data:/home/zap/.ZAP
+
+  nuclei:
+    image: projectdiscovery/nuclei:v3.11.1
+    profiles: [scan]
+    environment:
+      DISABLE_NUCLEI_TEMPLATES_PUBLIC_DOWNLOAD: "true"
+    networks: [lab, oast]
+    dns: [172.30.88.53]
+    depends_on:
+      - spring
+    volumes:
+      - nuclei-data:/root
+      - ./reports:/reports
+      - ./templates:/templates:ro
+      - ./templates/.nuclei-ignore:/root/.config/nuclei/.nuclei-ignore:ro
+    command:
+      - -u
+      - http://spring:8080/
+      - -t
+      - /templates/spring4shell-local.yaml
+      - -disable-update-check
+      - -no-interactsh
+      - -jsonl
+      - -o
+      - /reports/spring4shell.jsonl
+      - -no-color
+      - -stats
+
+  interactsh:
+    image: projectdiscovery/interactsh-server:v1.4.1
+    networks:
+      oast:
+        ipv4_address: 172.30.88.53
+        aliases: [oast.test]
+    command:
+      - -domain
+      - oast.test
+      - -ip
+      - 172.30.88.53
+      - -listen-ip
+      - 0.0.0.0
+      - -skip-acme
+      - -disable-update-check
+
+  nuclei-oast:
+    extends:
+      service: nuclei
+    depends_on:
+      - spring
+      - interactsh
+    command:
+      - -u
+      - http://spring:8080/
+      - -t
+      - /templates/CVE-2022-22965.yaml
+      - -include-tags
+      - intrusive
+      - -interactsh-server
+      - http://oast.test
+      - -disable-update-check
+      - -interactions-cooldown-period
+      - "15"
+      - -jsonl
+      - -o
+      - /reports/spring4shell-oast.jsonl
+      - -no-color
+      - -stats
+
+volumes:
+  zap-data:
+  nuclei-data:
+
+networks:
+  lab:
+    driver: bridge
+  oast:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.88.0/24

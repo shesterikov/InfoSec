@@ -1,0 +1,28 @@
+id: spring4shell-local-binding-check
+
+info:
+  name: Spring4Shell - Potential vulnerable data binding (local check)
+  author: infosec-lab
+  severity: high
+  description: |
+    Differential HTTP check based on ZAP rule 40045. An invalid boolean
+    supplied through ClassLoader produces HTTP 400 while a control request
+    succeeds. This is an indicator of unsafe binding, not proof of RCE.
+  reference:
+    - https://www.zaproxy.org/docs/alerts/40045/
+  tags: spring,rce,lab
+
+http:
+  - raw:
+      - |
+        GET /?name=Bob&age=25&aaa=bbb HTTP/1.1
+        Host: {{Hostname}}
+
+      - |
+        GET /?name=Bob&age=25&class.module.classLoader.DefaultAssertionStatus=nonsense HTTP/1.1
+        Host: {{Hostname}}
+
+    matchers:
+      - type: dsl
+        dsl:
+          - 'status_code_1 == 200 && status_code_2 == 400'
