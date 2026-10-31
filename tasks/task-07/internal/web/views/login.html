@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход в чат</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <h1>Вход в чат</h1>
+    <p>Для чтения и отправки сообщений войдите в систему.</p>
+    {{if .Error}}<p role="alert">{{.Error}}</p>{{end}}
+    <form method="post" action="/login">
+      <label>Имя пользователя<input name="username" required maxlength="100" value="{{.Username}}" autocomplete="username"></label>
+      <label>Пароль<input type="password" name="password" required maxlength="200" autocomplete="current-password"></label>
+      <button type="submit">Войти</button>
+    </form>
+  </main>
+</body>
+</html>

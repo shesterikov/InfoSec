@@ -1,0 +1,14 @@
+:root { font-family: system-ui, sans-serif; color: #172534; background: #f3f5f7; }
+body { margin: 0; }
+main { max-width: 820px; margin: 32px auto; padding: 0 20px 40px; }
+header p, time, .empty { color: #536273; }
+#xss-status { padding: 12px 16px; background: #e0eaf4; border-radius: 8px; }
+.messages { padding: 0; list-style: none; }
+.messages li { padding: 16px; margin-bottom: 12px; background: white; border-radius: 8px; }
+.meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; margin-bottom: 8px; }
+.message-text { overflow-wrap: anywhere; white-space: pre-wrap; }
+form { padding: 20px; background: white; border-radius: 8px; }
+label { display: block; margin-bottom: 16px; }
+input, textarea { display: block; box-sizing: border-box; width: 100%; margin-top: 6px;
+  padding: 10px; border: 1px solid #aeb9c5; border-radius: 6px; font: inherit; }
+button { padding: 10px 18px; border: none; border-radius: 6px; background: #245d99; color: white; font: inherit; cursor: pointer; }
