@@ -8,6 +8,7 @@
 
 ### Технические требования:
 
+- Наличие интернет-соединения
 - Наличие [Docker](https://docs.docker.com/desktop/) и [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Постановка задачи:
