@@ -6,6 +6,7 @@
 Получить практические навыки реализации сквозного шифрования сообщений на примере простого мессенджера.
 
 ### Технические требования:
+- Наличие интернет-соединения
 - Наличие [Docker](https://docs.docker.com/desktop/) и [Docker Compose](https://docs.docker.com/compose/install/)
 - Наличие [cURL](https://curl.se/download.html) / [Postman](https://www.postman.com/downloads/) / [Insomnia](https://insomnia.rest/download)
 - Современный браузер с поддержкой Web Crypto API
